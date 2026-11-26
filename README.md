@@ -51,5 +51,5 @@ https://expo.dev/accounts/gurelnisanur/projects/bsm447-odev-G221210079/builds/92
 
 ## Ekran Kaydı
 
-Üç ekranı gösteren kısa kayıt (en fazla 1 dakika):
-[Ekran kaydını izle](BURAYA_BAGLANTI_GELECEK)
+Üç ekranı gösteren kısa kayıt:
+[Ekran kaydını izle](https://drive.google.com/file/d/1FaJi2fujjUkh61r0X9BE0hCVleUJIX_D/view?usp=sharing)
