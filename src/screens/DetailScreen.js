@@ -26,8 +26,8 @@ export default function DetailScreen({ route }) {
     <ScrollView style={styles.container}>
       <ScrollView horizontal pagingEnabled>
         {item.images.map((uri, i) => (
-          <Image key={i} source={{ uri }} style={styles.image} />
-        ))}
+       <ImageWithFallback key={i} uri={uri} />
+       ))}
       </ScrollView>
 
       <Text style={styles.title}>{item.title}</Text>
@@ -68,6 +68,26 @@ export default function DetailScreen({ route }) {
   );
 }
 
+function ImageWithFallback({ uri }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <View style={[styles.image, styles.fallback]}>
+        <Text style={styles.fallbackText}>Görsel yok</Text>
+      </View>
+    );
+  }
+
+  return (
+    <Image
+      source={{ uri }}
+      style={styles.image}
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
   image: { width: 320, height: 240, resizeMode: 'contain', margin: 8 },
@@ -87,4 +107,6 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 18, fontWeight: 'bold', marginHorizontal: 16, marginTop: 20, marginBottom: 8 },
   review: { marginHorizontal: 16, marginBottom: 12, padding: 10, backgroundColor: '#f2f2f2', borderRadius: 8 },
   reviewer: { fontWeight: 'bold', marginBottom: 4 },
+  fallback: { backgroundColor: '#eee', justifyContent: 'center', alignItems: 'center' },
+  fallbackText: { color: '#888' },
 });
